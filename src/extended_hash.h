@@ -17,7 +17,7 @@ class Page {
     char* ptr;    //the address of the page start
     Page() {
       ptr = new char[PAGE_SIZE];
-      memset(ptr, 0, 200);
+      memset(ptr, 0, PAGE_SIZE);
       used_size = 0;
       accessed = false;
       dirty = false;
@@ -60,7 +60,7 @@ class Hash{
     void write_bucket_to_file(int pageid); //write back the bucket and clean the page
     void write_index_to_file();
     void read_index_from_file(int offset);
-    int read_tuple_from_file(int offset);
+    bool read_tuple_from_file(int offset);
     void read_bucket_from_file(int backetid, int pageid);
     
     
