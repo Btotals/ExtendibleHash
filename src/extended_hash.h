@@ -11,9 +11,9 @@ using namespace std;
 #define PAGE_SIZE 8192								//“≥√Ê¥Û–°
 class Page {
   public:
-  	int pageid;  
+  	int pageid;
   	int used_size;  //the size had been used
-  	int Bucketid;  
+  	int Bucketid;
   	bool locked;
   	bool accessed;  //have been written or read
   	bool dirty;		//have been written
@@ -92,16 +92,16 @@ class Hash{
 	unsigned int global_key(int t);
 	unsigned int final_key(Tuple t); // the truly key according to the local depth
 	unsigned int final_key(int t);
-	
+
 	void search();
-	
+
 	//****** the function of read and write *********
 	void write_bucket_to_file(int pageid); //write back the bucket and clean the page
 	void write_index_to_file();
 	void read_index_from_file(int offset);
 	bool read_tuple_from_file(int offset);
 	void read_bucket_from_file(int backetid, int pageid, int key);
-	
+
 	//****** the member of hash *********
 	Page page[PAGE_NUMBER];  //page[PAGE_NUMBER-2] used to be the input buffer, page[PAGE_NUMBER-1] used to be the catalogue
 	Bucket bucket[PAGE_NUMBER-2];

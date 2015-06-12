@@ -25,7 +25,7 @@ int main(int argc, char ** argv) {
   for (int i = 0; i < 300; i++)
   h.insert(Tuple(c));
 
-  
+
 
   for (int i = 0; i < PAGE_NUMBER-2; i++) {
     if (h.page[i].is_used) {
@@ -104,7 +104,7 @@ int Hash::evict_page() { //choose a page to evict and clean it, return the pagei
   for (int i = 0;; i++) {
   	if (i == PAGE_NUMBER-2) i = 0;
   	if (!page[i].locked){
-  	
+
     if (page[i].accessed) {
       page[i].accessed = false;
     } else {
@@ -115,7 +115,7 @@ int Hash::evict_page() { //choose a page to evict and clean it, return the pagei
       page[i].used_size = 0;
       return i;
     }
-    
+
 	}
   }
 }
@@ -204,7 +204,7 @@ void Hash::insert(Tuple t){
     index2 = split(index);
     page[index].locked = false;
     hkey = final_key(t);
-	if (bucket[index2].position == hkey) { 
+	if (bucket[index2].position == hkey) {
 		index = index2;
 	}
   }
@@ -277,7 +277,7 @@ int Hash::split(int pageid){
 void Hash::double_the_index() {
   int totalindex = 1;
   for (int i = 0; i < global_depth; i++) totalindex *= 2;  //calculate the total number of index
-  
+
   if (totalindex/(PAGE_SIZE/INT) == 0) {  // which means that a page is big enough to hold all the index
   	for (int i = 0; i < totalindex; i++) {
   	  Index[i+totalindex] = Index[i];
